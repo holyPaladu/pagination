@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { PaginationLogic } from "./PaginationLogic";
 
-export const usePagination = (totalPages: number, isLooped = false) => {
-  const [pagination] = useState(() => new PaginationLogic(totalPages, isLooped));
+export const usePagination = (totalPages: number, isLooped = false, step: number = 5) => {
+  const [pagination] = useState(() => new PaginationLogic(totalPages, isLooped, step));
   const [currentPage, setCurrentPage] = useState(pagination.getPage());
 
   useEffect(() => {
@@ -24,11 +24,22 @@ export const usePagination = (totalPages: number, isLooped = false) => {
     updatePage();
   };
 
+  const goForward = () => {
+    pagination.goForward();
+    updatePage();
+  };
+  const goBackward = () => {
+    pagination.goBackward();
+    updatePage();
+  };
+
   return {
     currentPage,
     nextPage,
     prevPage,
     getPaginationRange,
     goToPage,
+    goForward,
+    goBackward,
   };
 };

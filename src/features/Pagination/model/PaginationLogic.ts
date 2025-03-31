@@ -2,11 +2,13 @@ export class PaginationLogic {
   private totalPages: number;
   private currentPage: number;
   private isLooped: boolean;
+  private step: number;
 
-  constructor(totalPages: number, isLooped = false) {
+  constructor(totalPages: number, isLooped = false, step: number = 5) {
     this.currentPage = 1;
     this.totalPages = totalPages;
     this.isLooped = isLooped;
+    this.step = step;
   }
 
   getPage() {
@@ -59,5 +61,26 @@ export class PaginationLogic {
     }
 
     return range;
+  }
+
+  goForward() {
+    if (this.currentPage + this.step <= this.totalPages) {
+      this.currentPage += this.step;
+    } else if (this.isLooped) {
+      this.currentPage = ((this.currentPage + this.step - 1) % this.totalPages) + 1;
+    } else {
+      this.currentPage = this.totalPages;
+    }
+  }
+
+  goBackward() {
+    if (this.currentPage - this.step >= 1) {
+      this.currentPage -= this.step;
+    } else if (this.isLooped) {
+      this.currentPage =
+        this.totalPages - ((this.step - this.currentPage) % this.totalPages);
+    } else {
+      this.currentPage = 1;
+    }
   }
 }

@@ -16,6 +16,14 @@ function App() {
             <h2>Regular pagination</h2>
             <Pagination totalPages={10} isLooped={false} />
           </section>
+          <section className={styles.main__section}>
+            <h2>Looped pagination with forward and backward</h2>
+            <Pagination totalPages={10} isLooped={true} step={5} />
+          </section>
+          <section className={styles.main__section}>
+            <h2>Regular pagination with forward and backward</h2>
+            <Pagination totalPages={10} isLooped={false} step={5} />
+          </section>
         </div>
       </main>
     </>
