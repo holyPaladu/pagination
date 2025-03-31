@@ -1,5 +1,11 @@
+import "./styles/index.scss";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <div></div>
+    </>
+  );
 }
 
 export default App;
