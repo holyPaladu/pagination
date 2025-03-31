@@ -11,7 +11,10 @@ export const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   isLooped = false,
 }) => {
-  const { currentPage, nextPage, prevPage } = usePagination(totalPages, isLooped);
+  const { currentPage, nextPage, prevPage, getPaginationRange } = usePagination(
+    totalPages,
+    isLooped
+  );
 
   return (
     <article className={styles.pagination}>
@@ -32,11 +35,17 @@ export const Pagination: React.FC<PaginationProps> = ({
         </svg>
         <span>Back</span>
       </Button>
-      {Array.from({ length: totalPages }, (_, i) => (
-        <Button key={i + 1} className={currentPage === i + 1 ? styles.active : ""}>
-          <span>{i + 1}</span>
-        </Button>
-      ))}
+      {getPaginationRange().map((page) =>
+        page === "..." ? (
+          <Button>
+            <span>...</span>
+          </Button>
+        ) : (
+          <Button key={page} className={currentPage === page ? styles.active : ""}>
+            <span>{page}</span>
+          </Button>
+        )
+      )}
       <Button
         onClick={() => nextPage()}
         disabled={currentPage === totalPages && !isLooped}
