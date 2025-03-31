@@ -28,4 +28,36 @@ export class PaginationLogic {
       this.currentPage = this.totalPages;
     }
   }
+
+  goToPage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
+  }
+
+  getPaginationRange(): (number | "...")[] {
+    const range: (number | "...")[] = [];
+
+    if (this.totalPages <= 6) {
+      return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+    }
+
+    if (this.currentPage <= 3) {
+      range.push(1, 2, 3, "...", this.totalPages);
+    } else if (this.currentPage >= this.totalPages - 2) {
+      range.push(1, "...", this.totalPages - 2, this.totalPages - 1, this.totalPages);
+    } else {
+      range.push(
+        1,
+        "...",
+        this.currentPage - 1,
+        this.currentPage,
+        this.currentPage + 1,
+        "...",
+        this.totalPages
+      );
+    }
+
+    return range;
+  }
 }

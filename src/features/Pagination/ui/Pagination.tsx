@@ -11,7 +11,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   isLooped = false,
 }) => {
-  const { currentPage, nextPage, prevPage, getPaginationRange } = usePagination(
+  const { currentPage, nextPage, prevPage, getPaginationRange, goToPage } = usePagination(
     totalPages,
     isLooped
   );
@@ -41,7 +41,11 @@ export const Pagination: React.FC<PaginationProps> = ({
             <span>...</span>
           </Button>
         ) : (
-          <Button key={page} className={currentPage === page ? styles.active : ""}>
+          <Button
+            key={page}
+            className={currentPage === page ? styles.active : ""}
+            onClick={() => goToPage(page)}
+          >
             <span>{page}</span>
           </Button>
         )
