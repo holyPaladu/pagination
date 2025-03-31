@@ -4,21 +4,33 @@
   border-radius: var(--spacing-sm);
   padding: var(--spacing-md) var(--spacing-lg);
   color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
   cursor: pointer;
 
+  span {
+    color: var(--text-primary);
+  }
+
+  svg path {
+    fill: var(--icon-primary);
+  }
+
   &:hover {
-    color: var(--white-on-color);
     background-color: var(--black);
     border: 1px solid var(--black);
+
+    span {
+      color: var(--white-on-color);
+    }
+    svg path {
+      fill: var(--white-on-color);
+    }
   }
 
-  &.active {
-    color: var(--white-on-color);
-    background-color: var(--black);
-    border: 1px solid var(--black);
-  }
-
-  &.disabled {
+  &:disabled {
+    cursor: not-allowed;
     opacity: var(--opacity);
   }
 }

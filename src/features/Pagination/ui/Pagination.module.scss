@@ -1,0 +1,12 @@
+.pagination {
+  display: flex;
+  gap: calc(var(--spacing-xs) * 3);
+}
+.active {
+  background-color: var(--black) !important;
+  border: 1px solid var(--black) !important;
+
+  span {
+    color: var(--white-on-color) !important;
+  }
+}
