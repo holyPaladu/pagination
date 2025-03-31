@@ -19,7 +19,16 @@ export const usePagination = (totalPages: number, isLooped = false) => {
     updatePage();
   };
   const getPaginationRange = () => pagination.getPaginationRange();
-  const goToPage = (page: number) => pagination.goToPage(page);
+  const goToPage = (page: number) => {
+    pagination.goToPage(page);
+    updatePage();
+  };
 
-  return { currentPage, nextPage, prevPage, getPaginationRange, goToPage };
+  return {
+    currentPage,
+    nextPage,
+    prevPage,
+    getPaginationRange,
+    goToPage,
+  };
 };

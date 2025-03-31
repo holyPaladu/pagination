@@ -35,9 +35,9 @@ export const Pagination: React.FC<PaginationProps> = ({
         </svg>
         <span>Back</span>
       </Button>
-      {getPaginationRange().map((page) =>
+      {getPaginationRange().map((page, index) =>
         page === "..." ? (
-          <Button>
+          <Button key={index + `${isLooped}`}>
             <span>...</span>
           </Button>
         ) : (
