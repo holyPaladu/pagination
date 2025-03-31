@@ -12,6 +12,10 @@ function App() {
             <h2>Looped pagination</h2>
             <Pagination totalPages={10} isLooped={true} />
           </section>
+          <section className={styles.main__section}>
+            <h2>Regular pagination</h2>
+            <Pagination totalPages={10} isLooped={false} />
+          </section>
         </div>
       </main>
     </>

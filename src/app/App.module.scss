@@ -8,7 +8,7 @@
   &__wrapper {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
   }
 
   &__title {
@@ -19,7 +19,7 @@
   &__section {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
 
     h2 {
       font-size: var(--size-xl);

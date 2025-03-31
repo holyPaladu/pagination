@@ -6,6 +6,9 @@
   background-color: var(--black) !important;
   border: 1px solid var(--black) !important;
 
+  outline: 1px solid var(--black);
+  outline-offset: var(--spacing-xs);
+
   span {
     color: var(--white-on-color) !important;
   }
