@@ -27,12 +27,10 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <article className={styles.pagination}>
-      {step ? (
+      {step && (
         <Button onClick={() => goBackward()}>
           <ArrowDoubleIcon />
         </Button>
-      ) : (
-        ""
       )}
       <Button onClick={() => prevPage()} disabled={currentPage === 1 && !isLooped}>
         <ArrowIcon />
@@ -60,12 +58,10 @@ export const Pagination: React.FC<PaginationProps> = ({
         <span>Next</span>
         <ArrowIcon className={styles.rotate} />
       </Button>
-      {step ? (
+      {step && (
         <Button onClick={() => goForward()}>
           <ArrowDoubleIcon className={styles.rotate} />
         </Button>
-      ) : (
-        ""
       )}
     </article>
   );
